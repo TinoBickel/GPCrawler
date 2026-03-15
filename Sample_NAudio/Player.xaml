@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="Sample_NAudio.Player"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:svl="clr-namespace:WPFSoundVisualizationLib;assembly=WPFSoundVisualizationLib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="150" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <!-- Menu -->
+            <Menu Grid.Row="0">
+                <MenuItem Header="File">
+                    <MenuItem Header="Open File"
+                          Name="OpenFileMenuItem"
+                          Click="OpenFileMenuItem_Click" />
+                    <Separator />
+                    <MenuItem Header="Close"
+                          Name="CloseMenuItem"
+                          Click="CloseMenuItem_Click" />
+                </MenuItem>
+                <MenuItem Header="Theme">
+                    <MenuItem Name="DefaultThemeMenuItem"
+                          Header="Default (No Theme)"
+                          IsCheckable="True"
+                          Checked="DefaultThemeMenuItem_Checked" />
+                    <MenuItem Name="ExpressionDarkMenuItem"
+                          Header="Expression Dark"
+                          IsCheckable="True"
+                          Checked="ExpressionDarkMenuItem_Checked" />
+                    <MenuItem Name="ExpressionLightMenuItem"
+                          Header="Expression Light"
+                          IsCheckable="True"
+                          Checked="ExpressionLightMenuItem_Checked" />
+                </MenuItem>
+            </Menu>
+
+            <!-- Display Controls -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <svl:DigitalClock x:Name="clockDisplay"
+                              Grid.Column="0"
+                              ShowHours="False"
+                              ShowSubSeconds="True"
+                              HorizontalAlignment="Center"
+                              Margin="5" />
+
+                <svl:SpectrumAnalyzer x:Name="spectrumAnalyzer"
+                                  Margin="5"
+                                  BarCount="16" 
+                                  Grid.Column="1"/>
+
+                <svl:Equalizer NumberOfBands="16" Grid.Column="2"/>
+
+            </Grid>
+
+            <!-- WaveForm -->
+            <svl:WaveformTimeline x:Name="waveformTimeline"
+                                Margin="5"
+                                BorderThickness="1" 
+                                Grid.Row="2"/>
+
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Grid.Row="3">
+                <svl:TimeEditor Margin="5"
+                                Name="repeatStartTimeEdit"
+                                IsReadOnly="True" />
+                <svl:TimeEditor Margin="5"
+                                Name="repeatStopTimeEdit"
+                                IsReadOnly="True" />
+
+                <StackPanel HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        Grid.Column="1">
+
+                    <Button Name="PlayButton"
+                        VerticalAlignment="Center"
+                        Width="50"
+                        Height="24"
+                        Margin="2"
+                        Click="PlayButton_Click"
+                        IsEnabled="False"
+                        Content="Play" />
+                    <Button Name="PauseButton"
+                        VerticalAlignment="Center"
+                        Width="50"
+                        Height="24"
+                        Margin="2"
+                        Click="PauseButton_Click"
+                        IsEnabled="False"
+                        Content="Pause" />
+                    <Button Name="StopButton"
+                        VerticalAlignment="Center"
+                        Width="50"
+                        Height="24"
+                        Margin="2"
+                        Click="StopButton_Click"
+                        IsEnabled="False"
+                        Content="Stop" />
+                </StackPanel>
+            </StackPanel>
+
+            <Grid Grid.Row="4" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox VerticalAlignment="Center"
+                     Grid.Column="0"
+                     HorizontalAlignment="Stretch"
+                     Margin="5"
+                     IsReadOnly="True"
+                     Name="FileText" />
+
+                <Button Content="Browse"
+                    Grid.Column="1"
+                        Height="24"
+                        Width="50"
+                        HorizontalAlignment="Center"
+                        Margin="2,2,10,2"
+                        Name="BrowseButton"
+                        VerticalAlignment="Center"
+                        Click="BrowseButton_Click" />
+
+
+            </Grid>
+
+            <svl:AlbumArtDisplay x:Name="albumArtPanel" Margin="5" Grid.Column="1" Visibility="Collapsed"/>
+        </Grid>
+    </Grid>
+</UserControl>

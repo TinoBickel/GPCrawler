@@ -1,0 +1,17 @@
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+bin/
+obj/
+
+Output/
+Publish/
+app.publish/
+
+Data/*.sdf
+
+*.cache
+*.pdb

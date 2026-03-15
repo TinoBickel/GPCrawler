@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="GpCrawler2.Controls.TimeSectionLister"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    
+    <UserControl.Resources>
+        <DataTemplate x:Key="TimeSectionTemplate">
+            <DockPanel Height="50">
+                <Button Margin="0,2,7,2" 
+                        DockPanel.Dock="Right"
+                        Click="DeleteButton_Click">
+                    <Image Source="/Resources/Icons/Delete.png" 
+                           Margin="2,0,2,0"
+                           Width="16"
+                           Height="16"
+                           VerticalAlignment="Center"/>
+                </Button>
+
+                <Button MinWidth="100" 
+                        Margin="2" 
+                        Background="#DE541D"
+                        Click="ResetButton_Click">
+                
+                    <StackPanel Orientation="Vertical">
+                        <TextBox   FontSize="14" 
+                                   FontWeight="Bold"
+                                   Text="{Binding Title}" 
+                                   Background="Transparent"
+                                   Focusable="false"
+                                   Cursor="Arrow"
+                                   Margin="5,0,2,0"
+                                   FocusableChanged="TextBox_FocusableChanged"
+                                   MouseDoubleClick="TextBox_MouseDoubleClick"
+                                   KeyDown="TextBox_KeyDown"
+                                   BorderThickness="0"
+                                   HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="{Binding SubTitle}" Margin="0,-2,0,2" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </DockPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <ItemsControl x:Name="TimeSectionsListerCtrl"
+                    ItemTemplate="{StaticResource TimeSectionTemplate}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal"/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
+
+</UserControl>

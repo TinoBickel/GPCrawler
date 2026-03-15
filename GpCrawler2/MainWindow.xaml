@@ -1,0 +1,28 @@
+﻿<mui:ModernWindow x:Class="GpCrawler2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        xmlns:local="clr-namespace:GpCrawler2"
+        Title="GpCrawler by Tino Bickel" 
+        MinHeight="800" 
+        MinWidth="1024"
+        WindowState="Maximized"
+        ContentSource="/Pages/Home.xaml"
+        PreviewKeyDown="ModernWindow_PreviewKeyDown"
+        >
+    
+    <mui:ModernWindow.Resources>
+        <Image x:Key="WindowBackgroundContent" x:Shared="false" Source="Resources\Backgrounds\Background1.jpg" Stretch="UniformToFill"/>
+    </mui:ModernWindow.Resources>
+
+    <mui:ModernWindow.MenuLinkGroups>
+        <mui:LinkGroup DisplayName="gpCrawler 1.0">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="Songs" Source="/Pages/Home.xaml"/>
+                <mui:Link DisplayName="Crawl" Source="/Pages/Crawl.xaml"/>
+                <mui:Link DisplayName="Player" Source="/Pages/Player.xaml"/>
+                <mui:Link DisplayName="About" Source="/Pages/About.xaml"/>
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+    </mui:ModernWindow.MenuLinkGroups>
+</mui:ModernWindow>

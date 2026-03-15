@@ -1,0 +1,4 @@
+﻿xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+
+<mui:BBCodeBlock BBCode="[url=http://www.google.com]go to google[/url]" />
+<mui:BBCodeBlock BBCode="This is a [b]text[/b] [i]sample[/i] with [u]some basic[/u]"/>
