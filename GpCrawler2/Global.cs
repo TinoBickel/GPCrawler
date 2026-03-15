@@ -46,15 +46,26 @@ namespace GpCrawler2 {
 
     public static string SongDatabasePath {
       get {
-        return ProfileDir.AppendPath("Songs.sdf");
+        return ProfileDir.AppendPath("Songs.db3");
       }
+    }
+
+    public static void InitializeApplicationData() {
+      CreateProfileIfNeeded();
+      AppDomain.CurrentDomain.SetData("DataDirectory", ProfileDir);
     }
 
     public static void CreateProfileIfNeeded() {
       if (!Directory.Exists(ProfileDir)) {
         Directory.CreateDirectory(ProfileDir);
+      }
 
-        File.Copy(StartupDir.AppendPath("Songs.sdf"), SongDatabasePath);
+      if (!File.Exists(SongDatabasePath)) {
+        var startupDatabasePath = StartupDir.AppendPath("Songs.db3");
+
+        if (File.Exists(startupDatabasePath)) {
+          File.Copy(startupDatabasePath, SongDatabasePath);
+        }
       }
     }
 

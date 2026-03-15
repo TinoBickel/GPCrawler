@@ -20,8 +20,8 @@ using FirstFloor.ModernUI.Windows.Controls;
 namespace GpCrawler2 {
   public partial class MainWindow : ModernWindow {
     public MainWindow() {
+      Global.InitializeApplicationData();
       InitializeComponent();
-      Global.CreateProfileIfNeeded();
     }
 
     protected override void OnClosing(CancelEventArgs e) {

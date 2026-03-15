@@ -177,11 +177,7 @@
     </Compile>
     <Compile Include="SampleAggregator.cs" />
     <Compile Include="SongInfo.cs" />
-    <Compile Include="SongModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SongModel.Context.tt</DependentUpon>
-    </Compile>
+    <Compile Include="SongModel.Context.cs" />
     <Compile Include="SongModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -329,7 +325,8 @@
     <Resource Include="Resources\Backgrounds\background1.jpg" />
     <Resource Include="Resources\Backgrounds\background5.jpg" />
     <Resource Include="Resources\Backgrounds\background6.jpg" />
-    <Content Include="Songs.sdf">
+    <Content Include="..\Data\Songs.db3">
+      <Link>Songs.db3</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="taglib-sharp.dll">

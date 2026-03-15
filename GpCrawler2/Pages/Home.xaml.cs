@@ -85,7 +85,15 @@ namespace GpCrawler2 {
 
     public Home() {
       InitializeComponent();
-      BuildExistingFilesList();
+      ExistingSongs = new List<Songs>();
+
+      try {
+        BuildExistingFilesList();
+      }
+      catch (Exception ex) {
+        Global.ReportException("Fehler beim Laden der Songs", ex);
+      }
+
       InitializeCollectionView();
       SubscribeToEvents();
       this.HomeGrid.DataContext = this;
